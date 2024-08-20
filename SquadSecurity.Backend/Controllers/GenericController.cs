@@ -1,20 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SquadSecurity.Backend.Repositories.Implementations;
+using SquadSecurity.Backend.Repositories.Interfaces;
 using SquadSecurity.Backend.UnitsOfWork.Interfaces;
 
 namespace SquadSecurity.Backend.Controllers
 {
     public class GenericController<T> : Controller where T : class
     {
-        private readonly IGenericUnitOfWork<T> _unitOfWork;
+        private readonly IGenericRepository<T> _genericRepository;
 
-        public GenericController(IGenericUnitOfWork<T> unitOfWork)
+        public GenericController(IGenericRepository<T> genericRepository)
         {
-            _unitOfWork = unitOfWork;
+            _genericRepository = genericRepository;
         }
         [HttpGet]
         public virtual async Task<IActionResult> GetAsync()
         {
-            var action = await _unitOfWork.GetAsync();
+            var action = await _genericRepository.GetAsync();
             if (action.WasSucceess)
             {
                 return Ok(action.Result);
@@ -25,7 +27,7 @@ namespace SquadSecurity.Backend.Controllers
         [HttpGet("{id}")]
         public virtual async Task<IActionResult> GetAsync(int id)
         {
-            var action = await _unitOfWork.GetAsync(id);
+            var action = await _genericRepository.GetAsync(id);
             if (action.WasSucceess)
             {
                 return Ok(action.Result);
@@ -36,7 +38,7 @@ namespace SquadSecurity.Backend.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> PostAsync(T model)
         {
-            var action = await _unitOfWork.AddAsync(model);
+            var action = await _genericRepository.AddAsync(model);
             if (action.WasSucceess)
             {
                 return Ok(action.Result);
@@ -47,7 +49,7 @@ namespace SquadSecurity.Backend.Controllers
         [HttpPut]
         public virtual async Task<IActionResult> PutAsync(T model)
         {
-            var action = await _unitOfWork.UpdateAsync(model);
+            var action = await _genericRepository.UpdateAsync(model);
             if (action.WasSucceess)
             {
                 return Ok(action.Result);
@@ -59,7 +61,7 @@ namespace SquadSecurity.Backend.Controllers
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> DeleteAsync(int id)
         {
-            var action = await _unitOfWork.DeleteAsync(id);
+            var action = await _genericRepository.DeleteAsync(id);
             if (action.WasSucceess)
             {
                 return NoContent();
