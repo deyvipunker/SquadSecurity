@@ -119,11 +119,6 @@ namespace SquadSecurity.Backend.Repositories.Implementations
             }
         }
 
-        Task<ActionResponse<T>> IGenericRepository<T>.AddAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
         private ActionResponse<T> DbUpdateExceptionAxtionResponse()
         {
             return new ActionResponse<T>
@@ -132,12 +127,7 @@ namespace SquadSecurity.Backend.Repositories.Implementations
                 Message = "Ya existe el registro que estas intentando crear."
             };
         }
-
-        Task<ActionResponse<T>> IGenericRepository<T>.DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+   
         private ActionResponse<T> ExceptionActionResponse(Exception exception)
         {
             return new ActionResponse<T>
@@ -147,19 +137,6 @@ namespace SquadSecurity.Backend.Repositories.Implementations
             };
         }
 
-        Task<ActionResponse<T>> IGenericRepository<T>.GetAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ActionResponse<IEnumerable<T>>> IGenericRepository<T>.GetAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ActionResponse<T>> IGenericRepository<T>.UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
+ 
     }
 }

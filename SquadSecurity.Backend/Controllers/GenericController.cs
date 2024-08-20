@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SquadSecurity.Backend.Repositories.Implementations;
 using SquadSecurity.Backend.Repositories.Interfaces;
-using SquadSecurity.Backend.UnitsOfWork.Interfaces;
 
 namespace SquadSecurity.Backend.Controllers
 {
