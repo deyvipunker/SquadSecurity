@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace SquadSecurity.Shared.Entities
 {
     public class RevisionCab
     {
-        public int Codigo { get; set; }
+        public int Id { get; set; }
+
         public int CodigoSquad { get; set; }
         public int CodigoIniciativa { get; set; }
         public int CodigoAnalista { get; set; }
@@ -17,8 +19,12 @@ namespace SquadSecurity.Shared.Entities
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Comentario { get; set; }
-        public string EstadoAuditoria { get; set; }
+
+        // AUDITORIA
+        [MaxLength(10)]
+        public string? EstadoAuditoria { get; set; }
         public DateTime FechaAuditoria { get; set; }
-        public string UsuarioAuditoria { get; set; }
+        [MaxLength(50)]
+        public string? UsuarioAuditoria { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,10 @@ namespace SquadSecurity.Shared.Entities
 
 
         // AUDITORIA
-        public string EstadoAuditoria { get; set; }
+        [MaxLength(10)]
+        public string? EstadoAuditoria { get; set; }
         public DateTime FechaAuditoria { get; set; }
-        public string UsuarioAuditoria { get; set; }
+        [MaxLength(50)]
+        public string? UsuarioAuditoria { get; set; }
     }
 }
