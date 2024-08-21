@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace SquadSecurity.Shared.Entities
 {
-    public class Squad
+    public class Colaborador
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(200, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string Nombre { get; set; }
+        public string? NombreCompleto { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(400, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
+        public string? Rol { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string? Celular { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(100, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string Tribu { get; set; }
+        public string? Correo { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(100, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string Negocio { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoArquitecto { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoAnalista { get; set; }
+        public int Dni { get; set; }
 
         public string? Comentario { get; set; }
 
@@ -41,7 +41,6 @@ namespace SquadSecurity.Shared.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
         public string? UsuarioAuditoria { get; set; }
-
-        public ICollection<SquadDetalle>? SquadDets { get; set; }
-    }
+    
+}
 }
