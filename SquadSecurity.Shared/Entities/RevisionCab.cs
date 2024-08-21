@@ -36,13 +36,15 @@ namespace SquadSecurity.Shared.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(10, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string EstadoAuditoria { get; set; }
+        public string? EstadoAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime FechaAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string UsuarioAuditoria { get; set; }
+        public string? UsuarioAuditoria { get; set; }
+
+        public ICollection<RevisionDet>? RevisionDets { get; set; }
     }
 }

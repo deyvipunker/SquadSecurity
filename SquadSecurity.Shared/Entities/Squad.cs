@@ -1,54 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SquadSecurity.Shared.Entities
 {
-    public class RevisionDet
+    public class Squad
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoCabecera { get; set; }
+        [MaxLength(200, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
+        public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoIniciativa { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
+        public string Tribu { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoHabilitador { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
+        public string Negocio { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoSquad { get; set; }
+        public int CodigoArquitecto { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(30, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string Entregable { get; set; }
+        public int CodigoAnalista { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoEstadoCumplimiento { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoExcepcion { get; set; }
-
-        public int? Comentario { get; set; }
+        public string? Comentario { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(10, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string? EstadoAuditoria { get; set; }
+        public string EstadoAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime FechaAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string? UsuarioAuditoria { get; set; }
+        public string UsuarioAuditoria { get; set; }
 
-        public int RevisionCabId { get; set; }
-
-        public RevisionCab? RevisionCab { get; set; }
+        public ICollection<SquadDetalle>? SquadDets { get; set; }
     }
 }
