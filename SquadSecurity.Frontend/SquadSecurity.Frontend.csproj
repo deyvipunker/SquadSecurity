@@ -17,8 +17,4 @@
     <ProjectReference Include="..\SquadSecurity.Shared\SquadSecurity.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Parametros\" />
-  </ItemGroup>
-
 </Project>
