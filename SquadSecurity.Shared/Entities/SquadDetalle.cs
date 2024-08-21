@@ -1,38 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SquadSecurity.Shared.Entities
 {
-    public class RevisionDet
+    public class SquadDetalle
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoCabecera { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoIniciativa { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoHabilitador { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int CodigoSquad { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MaxLength(30, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
-        public string Entregable { get; set; }
+        public int CodigoIntegrante { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoEstadoCumplimiento { get; set; }
-
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int CodigoExcepcion { get; set; }
+        public int CodigoAsignacion { get; set; }
 
         public int? Comentario { get; set; }
 
@@ -47,8 +33,8 @@ namespace SquadSecurity.Shared.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
         public string? UsuarioAuditoria { get; set; }
 
-        public int RevisionCabId { get; set; }
+        public int SquadId { get; set; }
 
-        public RevisionCab? RevisionCab { get; set; }
+        public Squad? Squad { get; set; }
     }
 }

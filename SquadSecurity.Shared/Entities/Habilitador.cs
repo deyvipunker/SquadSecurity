@@ -22,11 +22,11 @@ namespace SquadSecurity.Shared.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
 
-        public string Titulo { get; set; }
+        public string? Titulo { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
 
-        public string Descripcion { get; set; }
+        public string? Descripcion { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int CodigoCriterio { get; set; }
@@ -39,7 +39,7 @@ namespace SquadSecurity.Shared.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(400, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string Comentario { get; set; }
+        public string? Comentario { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int CodigoTipoSolucion { get; set; }
@@ -49,7 +49,7 @@ namespace SquadSecurity.Shared.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(400, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string DescripcionActividad { get; set; }
+        public string? DescripcionActividad { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int CodigoAmbienteCapturaE { get; set; }
@@ -66,13 +66,13 @@ namespace SquadSecurity.Shared.Entities
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(10, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string EstadoAuditoria { get; set; }
+        public string? EstadoAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime FechaAuditoria { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
-        public string UsuarioAuditoria { get; set; }
+        public string? UsuarioAuditoria { get; set; }
     }
 }
