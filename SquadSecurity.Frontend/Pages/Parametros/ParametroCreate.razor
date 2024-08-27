@@ -1,0 +1,29 @@
+﻿@page "/parametros/create"
+<h3>Crear Categoria</h3>
+@* 
+@typeparam TModel where TModel : IEntityWithName *@
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContex" OnValidSubmit="CreateAsysnc">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label>NOMBRE</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@parametro.Nombre" />
+            <ValidationMessage For="@(()=> parametro.Nombre)" />
+        </div>
+        <label>VALOR</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@parametro.Valor" />
+            <ValidationMessage For="@(()=> parametro.Valor)" />
+        </div>
+        <label>ABREVIATURA</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@parametro.Abreviatura" />
+            <ValidationMessage For="@(()=> parametro.Abreviatura)" />
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+    <button class="btn btn-success" @onclick="Return">Regresar</button>
+</EditForm>

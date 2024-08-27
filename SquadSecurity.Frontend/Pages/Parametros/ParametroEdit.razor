@@ -1,0 +1,30 @@
+﻿@page "/parametros/edit/{Id:int}"
+<h3>Editar Parametro</h3>
+@if (parametro is null)
+{
+    <Loading />
+}
+else
+{
+    <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+    <EditForm EditContext="editContex" OnValidSubmit="EditAsync">
+        
+        <div class="mb-3">
+            <label>NOMBRE</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@parametro.Nombre" />
+            </div>
+            <label>VALOR</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@parametro.Valor" />
+            </div>
+            <label>ABREVIATURA</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@parametro.Abreviatura" />
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+        <button class="btn btn-success" @onclick="Return">Regresar</button>
+    </EditForm>
+}

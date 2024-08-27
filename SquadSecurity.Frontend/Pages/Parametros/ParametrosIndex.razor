@@ -1,5 +1,45 @@
-﻿<h3>ParametrosIndex</h3>
+﻿@page "/parametros"
 
-@code {
+<h3>Parametros</h3>
 
-}
+<div class="mb-3">
+    <a class="btn btn-primary" href="/parametros/create">Nueva parametros</a>
+</div>
+
+<GenerricList MyList="Parametros">
+    <Body>
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectPage="SelectedPageAsync" />
+        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+            <input style="width:400px;" type="text" class="form-control" id="titulo" placeholder="Buscar país..." @bind-value="Filter" />
+            <button type="button" class="btn btn-outline-primary mx-1" @onclick="ApplyFilterAsync">Filtrar</button>
+            <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync">Limpiar</button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Valor</th>
+                    <th>Abreviatura</th>
+                    <th style="width:210px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var parametro in Parametros!)
+                {
+                    <tr>
+                        <td>@parametro.Nombre</td>
+                        <td>@parametro.Valor</td>
+                        <td>@parametro.Abreviatura</td>
+                        <td>
+                            <a href="/parametros/edit/@parametro.Id" class="btn btn-warning">Editar</a>
+                            <button @onclick="@(() => DeleteAsycn(parametro))" class="btn btn-danger">Borrar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenerricList>

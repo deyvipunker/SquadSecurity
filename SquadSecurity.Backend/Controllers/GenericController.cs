@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SquadSecurity.Backend.Repositories.Interfaces;
+using SquadSecurity.Shared.DTOs;
 
 namespace SquadSecurity.Backend.Controllers
 {
@@ -11,10 +12,32 @@ namespace SquadSecurity.Backend.Controllers
         {
             _genericRepository = genericRepository;
         }
+
         [HttpGet]
+        public virtual async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _genericRepository.GetAsync(pagination);
+            if (action.WasSucceess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("full")]
         public virtual async Task<IActionResult> GetAsync()
         {
             var action = await _genericRepository.GetAsync();
+            if (action.WasSucceess)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+        [HttpGet("totalPages")]
+        public virtual async Task<IActionResult> GetPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _genericRepository.GetTotalPagesAsync(pagination);
             if (action.WasSucceess)
             {
                 return Ok(action.Result);
@@ -67,5 +90,7 @@ namespace SquadSecurity.Backend.Controllers
 
             return BadRequest(action.Message);
         }
+
+
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SquadSecurity.Backend.Data;
+using SquadSecurity.Backend.Helpers;
 using SquadSecurity.Backend.Repositories.Interfaces;
+using SquadSecurity.Shared.DTOs;
 using SquadSecurity.Shared.Responses;
 
 namespace SquadSecurity.Backend.Repositories.Implementations
@@ -137,6 +139,30 @@ namespace SquadSecurity.Backend.Repositories.Implementations
             };
         }
 
- 
+        public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+        {
+            var queryable = _entity.AsQueryable();
+
+            return new ActionResponse<IEnumerable<T>>
+            {
+                WasSucceess = true,
+                Result = await queryable
+                .Paginate(pagination)
+                .ToListAsync()
+            };
+        }
+
+        public virtual async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
+        {
+            var queryable = _entity.AsQueryable();
+            double count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling(count / pagination.RecorsNumber);
+            return new ActionResponse<int>
+            {
+                WasSucceess = true,
+                Result = totalPages
+            };
+        }
+
     }
 }

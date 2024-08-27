@@ -13,15 +13,15 @@ namespace SquadSecurity.Shared.Entities
 
         [MaxLength(30, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string? Nombre { get; set; }
+        public string Nombre { get; set; } = null!;
 
         [MaxLength(30, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string? Valor { get; set; }
+        public string Valor { get; set; } = null!;
 
         [MaxLength(10, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string? Abreviatura { get; set; }
+        public string Abreviatura { get; set; } = null!;
 
         // AUDITORIA
         [MaxLength(10)]
