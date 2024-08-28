@@ -1,0 +1,46 @@
+﻿@page "/habilitadores"
+
+<h3>Habilitadores</h3>
+
+<div class="mb-3">
+    <a class="btn btn-primary" href="/habilitadores/create">Nuevo Habilitador</a>
+</div>
+
+<GenerricList MyList="Habilitadores">
+    <Body>
+        <Pagination CurrentPage="currentPage"
+                    TotalPages="totalPages"
+                    SelectPage="SelectedPageAsync" />
+        <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+            <input style="width:400px;" type="text" class="form-control" id="titulo" placeholder="Buscar habilitador..." @bind-value="Filter" />
+            <button type="button" class="btn btn-outline-primary mx-1" @onclick="ApplyFilterAsync">Filtrar</button>
+            <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync">Limpiar</button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th style="width:210px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var habilitador in Habilitadores!)
+                {
+                    <tr>
+                        <td>@habilitador.Codigo</td>
+                        <td>@habilitador.Titulo</td>
+                        <td>@habilitador.Descripcion</td>
+                        <td>
+                            <a href="/habilitadores/edit/@habilitador.Id" class="btn btn-warning">Editar</a>
+                            <button @onclick="@(() => DeleteAsycn(habilitador))" class="btn btn-danger">Borrar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenerricList>
+

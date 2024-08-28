@@ -17,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=DefaultConnection"));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IParametrosRepository, ParametrosRepository>();
+builder.Services.AddScoped<IHabilitadoresRepository, HabilitadoresRepository>();
+
 
 var app = builder.Build();
 
