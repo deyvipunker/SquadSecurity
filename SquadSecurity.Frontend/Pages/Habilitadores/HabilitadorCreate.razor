@@ -1,0 +1,12 @@
+﻿@page "/habilitador/create"
+<h3>Crear Habilitador</h3>
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="CreateAsync">
+    <DataAnnotationsValidator />
+    
+    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+    <button class="btn btn-success" @onclick="Return">Regresar</button>
+</EditForm>
+
